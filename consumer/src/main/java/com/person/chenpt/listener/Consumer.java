@@ -1,5 +1,6 @@
 package com.person.chenpt.listener;
 
+import com.person.chenpt.utils.ExcelPoiUtil;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,11 @@ public class Consumer {
     @RabbitListener(queues = "TestDirectQueue")
     public void process(Map testMsg){
         System.out.println("DirectReceiver消费者收到消息  : " + testMsg.toString());
+    }
+
+
+    public void main(String[] args){
+
     }
 
 
