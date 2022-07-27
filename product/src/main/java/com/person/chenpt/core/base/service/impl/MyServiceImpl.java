@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import com.cesgroup.jgj.core.util.Constants;
 import com.google.common.collect.Lists;
+import com.person.chenpt.core.util.Constants;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
@@ -67,7 +67,7 @@ public class MyServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T>
     }
 
     @Override
-    public boolean removeByIds(Collection<? extends Serializable> idList) {
+    public boolean removeByIds(Collection<?> idList) {
         if (CollectionUtils.isEmpty(idList)) {
             return false;
         }

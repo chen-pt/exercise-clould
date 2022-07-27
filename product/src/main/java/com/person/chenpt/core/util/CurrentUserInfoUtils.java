@@ -1,4 +1,4 @@
-package com.person.chenpt.util;
+package com.person.chenpt.core.util;
 
 
 import com.person.chenpt.core.base.model.BaseEntity;

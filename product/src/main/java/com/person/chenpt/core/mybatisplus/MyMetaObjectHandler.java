@@ -1,7 +1,7 @@
 package com.person.chenpt.core.mybatisplus;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.person.chenpt.util.CurrentUserInfoUtils;
+import com.person.chenpt.core.util.CurrentUserInfoUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;

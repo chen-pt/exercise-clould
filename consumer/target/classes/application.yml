@@ -37,10 +37,10 @@ spring:
   application:
       name: spirng-boot-rabbitmq
   rabbitmq:
-      host: 10.0.114.132
+      host: 192.168.3.85
       port: 5672
       username: admin
-      password: 123456
+      password: admin
       virtual-host: /
 
 mybatis-plus:
