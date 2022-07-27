@@ -1,6 +1,5 @@
 server:
-  port: 8765
-
+  port: 8766
 spring:
   datasource:
         dialect: mysql
@@ -34,42 +33,15 @@ spring:
     multipart:
       max-request-size: 1000MB
       max-file-size: 100MB
-  rabbitmq:
-      host: 192.168.3.85
-      port: 5672
-      username: admin
-      password: admin
-      virtual-host: /
+  #easypoi启用覆盖
+  main:
+    allow-bean-definition-overriding: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
-  typeAliasesPackage: com.cpt.person.entity
-
-xxl:
-  job:
-    enable: false
-    accessToken:
-    admin:
-      addresses: http://127.0.0.1:8080/xxl-job-admin
-    executor:
-      appname: chenptDemo
-      ip: 192.168.61.1
-      port: 19090
-      logpath: D:\logs
-      logretentiondays: -1
+  typeAliasesPackage: com.person.chenpt.entity
 
 
-#  xxl.job.enable = false
-#  xxl.job.admin.addresses = http://10.0.114.148:8111/xxl-job-admin
-#  xxl.job.executor.appname=nwht
-#  xxl.job.executor.ip=192.168.222.58
-#  xxl.job.executor.port=17070
-#  xxl.job.accessToken=
-#  xxl.job.executor.logpath=/data/logs/xxl-job/nwht
-#  xxl.job.executor.logretentiondays=-1
 
-person:
-  name: 陈朋涛
-  sex: 男
-  age: 18
+
 
