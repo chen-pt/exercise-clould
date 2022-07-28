@@ -13,7 +13,7 @@ import java.util.Objects;
  * @since 2020/7/2
  */
 @ApiModel("分页查询")
-public abstract class BasePageQuery<T> {
+public class BasePageQuery<T> {
     public static final int DEFAULT_PAGE_NUM = 1;
     public static final int DEFAULT_PAGE_SIZE = 10;
 
@@ -38,13 +38,13 @@ public abstract class BasePageQuery<T> {
             this.pageSize = pageSize;
         }
     }
-    public Page<T> cratePage(){
+    public com.baomidou.mybatisplus.extension.plugins.pagination.Page<T> mybatisPlusPage(){
         Page<T> page = new Page<>();
         page.setCurrent(getPageNum());
         page.setSize(getPageSize());
         return page;
     }
-    public com.github.pagehelper.Page<T> startPage(){
+    public com.github.pagehelper.Page<T> pageHelperPage(){
         return PageHelper.startPage(getPageNum(), getPageSize());
     }
 }

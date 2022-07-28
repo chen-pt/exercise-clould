@@ -3,33 +3,38 @@ server:
 
 spring:
   datasource:
-        dialect: mysql
-        url: 'jdbc:mysql://192.168.61.132:3306/ruoyi?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8'
-        username: 'root'
-        password: 'root'
-        driver-class-name: 'com.mysql.jdbc.Driver'
-        type: com.alibaba.druid.pool.DruidDataSource
-        initialSize: 1
-        minIdle : 5
-        maxActive: 10
-        maxWait: 60000
-        timeBetweenEvictionRunsMillis: 60000
-        minEvictableIdleTimeMillis: 300000
-        validationQuery: SELECT 'x'
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        poolPreparedStatements: true
-        maxPoolPreparedStatementPerConnectionSize: 20
-        filters: stat,slf4j,wall
-        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-        useGlobalDataSourceStat: true
-        monitorUserName: admin
-        monitorPassword: admin
-        resetEnable: false
-        allow:
-        deny:
-        exclusions:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://localhost:5238
+    username: HOUSE_LEASE
+    password: Aa12345678
+#  datasource:
+#        dialect: mysql
+#        url: 'jdbc:mysql://192.168.61.132:3306/ruoyi?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8'
+#        username: 'root'
+#        password: 'root'
+#        driver-class-name: 'com.mysql.jdbc.Driver'
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        initialSize: 1
+#        minIdle : 5
+#        maxActive: 10
+#        maxWait: 60000
+#        timeBetweenEvictionRunsMillis: 60000
+#        minEvictableIdleTimeMillis: 300000
+#        validationQuery: SELECT 'x'
+#        testWhileIdle: true
+#        testOnBorrow: false
+#        testOnReturn: false
+#        poolPreparedStatements: true
+#        maxPoolPreparedStatementPerConnectionSize: 20
+#        filters: stat,slf4j,wall
+#        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#        useGlobalDataSourceStat: true
+#        monitorUserName: admin
+#        monitorPassword: admin
+#        resetEnable: false
+#        allow:
+#        deny:
+#        exclusions:
   servlet:
     multipart:
       max-request-size: 1000MB

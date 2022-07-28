@@ -53,22 +53,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.battcn</groupId>
-                <artifactId>swagger-spring-boot-starter</artifactId>
-                <version>2.1.5-RELEASE</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.battcn</groupId>
-                        <artifactId>swagger-vue-ui</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-ui</artifactId>
-                <version>2.0.4</version>
-            </dependency>
-            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <optional>true</optional>
@@ -105,6 +89,16 @@
                 <artifactId>jjwt</artifactId>
                 <version>0.9.0</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>2.0.9</version>
+            </dependency>
+            <dependency>
+                <groupId>3rd.dm8</groupId>
+                <artifactId>DmJdbcDriver18</artifactId>
+                <version>1.8</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -133,6 +127,12 @@
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>6.8.11</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
