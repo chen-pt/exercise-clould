@@ -27,9 +27,7 @@ public class RabbitMqController {
     @GetMapping("/send")
     @ApiOperation("direct队列发送")
     public Result sendMessage(){
-        for(int i=1;i<=10;i++){
-            rabbitTemplate.convertAndSend(RabbitConst.directExchange,RabbitConst.directRoutingKey,"hello test");
-        }
+        rabbitTemplate.convertAndSend(RabbitConst.directExchange,RabbitConst.directRoutingKey,"hello test");
         return Result.success();
     }
 
@@ -50,5 +48,22 @@ public class RabbitMqController {
         return Result.success("ok");
     }
 
+    @GetMapping("/testAck")
+    @ApiOperation("ack测试")
+    public Result testAck(){
+        /**
+         * 测试交换机不存在的情况下消息回调机制
+         * error: reply-code=404, reply-text=NOT_FOUND - no exchange 'tests' in vhost '/', class-id=60, method-id=40
+         */
+//        rabbitTemplate.convertAndSend("tests","chenpt.order.test","hello order test");
+        /**
+         * 交换机存在、没有相应的路由键绑定、两个回调函数都触发了
+         * 消息是推送成功到服务器了的，所以ConfirmCallback对消息确认情况是true；
+         * 而在RetrunCallback回调函数的打印参数里面可以看到，消息是推送到了交换机成功了，
+         * 但是在路由分发给队列的时候，找不到队列，所以报了错误 NO_ROUTE 。
+         */
+        rabbitTemplate.convertAndSend(RabbitConst.directExchange,"chenpt.order.test","hello order test");
+        return Result.success("ok");
+    }
 
 }

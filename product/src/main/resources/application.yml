@@ -45,6 +45,17 @@ spring:
       username: admin
       password: admin
       virtual-host: /
+      #确认消息发送到交换机
+      publisher-confirm-type: correlated
+      #确认消息发送到队列
+      publisher-returns: true
+      listener:
+        direct:
+          #开启手动确认
+          acknowledge-mode: manual
+          #是否重试
+          retry:
+            enabled: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
