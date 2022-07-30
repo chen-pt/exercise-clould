@@ -4,6 +4,7 @@ import com.person.chenpt.constans.RabbitConst;
 import com.person.chenpt.core.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,4 +67,19 @@ public class RabbitMqController {
         return Result.success("ok");
     }
 
+    /**
+     * 发送带有过期时间的消息 (10s)
+     * 超时未消费的消息则进入死信队列
+     * @return
+     */
+    @GetMapping("/sendDlx")
+    @ApiOperation("dlx测试")
+    public Result sendDlx(){
+        rabbitTemplate.convertAndSend("testDirectEx","test","hello deadEx test",message -> {
+            message.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+            message.getMessageProperties().setExpiration("10000");
+            return message;
+        });
+        return Result.success("ok");
+    }
 }

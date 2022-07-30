@@ -25,6 +25,7 @@ public class RabbitConst {
     public static final String topicRoutingKey1 = "chenpt.#";
     public static final String topicRoutingKey2 = "chenpt.*";
 
-
+    public static final String deadExchange = "deadExchange";
+    public static final String deadQueue = "deadQueue";
 
 }
