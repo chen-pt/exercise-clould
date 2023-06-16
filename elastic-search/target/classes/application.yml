@@ -1,82 +1,49 @@
 server:
-  port: 8765
-
+  port: 8767
 spring:
   datasource:
-        dialect: mysql
-        url: 'jdbc:mysql://192.168.61.132:3306/ruoyi?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8'
-        username: 'root'
-        password: 'root'
-        driver-class-name: 'com.mysql.jdbc.Driver'
-        type: com.alibaba.druid.pool.DruidDataSource
-        initialSize: 1
-        minIdle : 5
-        maxActive: 10
-        maxWait: 60000
-        timeBetweenEvictionRunsMillis: 60000
-        minEvictableIdleTimeMillis: 300000
-        validationQuery: SELECT 'x'
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        poolPreparedStatements: true
-        maxPoolPreparedStatementPerConnectionSize: 20
-        filters: stat,slf4j,wall
-        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-        useGlobalDataSourceStat: true
-        monitorUserName: admin
-        monitorPassword: admin
-        resetEnable: false
-        allow:
-        deny:
-        exclusions:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://localhost:5238
+      username: HOUSE_LEASE
+      password: Aa12345678
+#        dialect: mysql
+#        url: 'jdbc:mysql://192.168.61.132:3306/ruoyi?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8'
+#        username: 'root'
+#        password: 'root'
+#        driver-class-name: 'com.mysql.jdbc.Driver'
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        initialSize: 1
+#        minIdle : 5
+#        maxActive: 10
+#        maxWait: 60000
+#        timeBetweenEvictionRunsMillis: 60000
+#        minEvictableIdleTimeMillis: 300000
+#        validationQuery: SELECT 'x'
+#        testWhileIdle: true
+#        testOnBorrow: false
+#        testOnReturn: false
+#        poolPreparedStatements: true
+#        maxPoolPreparedStatementPerConnectionSize: 20
+#        filters: stat,slf4j,wall
+#        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#        useGlobalDataSourceStat: true
+#        monitorUserName: admin
+#        monitorPassword: admin
+#        resetEnable: false
+#        allow:
+#        deny:
+#        exclusions:
   servlet:
     multipart:
       max-request-size: 1000MB
       max-file-size: 100MB
-  rabbitmq:
-      host: 10.0.114.132
-      port: 5672
-      username: admin
-      password: 123456
-      virtual-host: /
+  elasticsearch:
+    rest:
+      uris: 192.168.3.103:9200
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
   typeAliasesPackage: com.cpt.person.entity
 
-xxl:
-  job:
-    enable: false
-    accessToken:
-    admin:
-      addresses: http://127.0.0.1:8080/xxl-job-admin
-    executor:
-      appname: chenptDemo
-      ip: 192.168.61.1
-      port: 19090
-      logpath: D:\logs
-      logretentiondays: -1
 
-################### elasticsearch 变量相关配置 #########################
-#配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
-static:
-  elasticsearch:
-    cluster-nodes: 10.0.114.146:9200
-    username: elastic
-    password: 123456
-
-#  xxl.job.enable = false
-#  xxl.job.admin.addresses = http://10.0.114.148:8111/xxl-job-admin
-#  xxl.job.executor.appname=nwht
-#  xxl.job.executor.ip=192.168.222.58
-#  xxl.job.executor.port=17070
-#  xxl.job.accessToken=
-#  xxl.job.executor.logpath=/data/logs/xxl-job/nwht
-#  xxl.job.executor.logretentiondays=-1
-
-person:
-  name: 陈朋涛
-  sex: 男
-  age: 18
 

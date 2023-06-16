@@ -40,11 +40,23 @@ spring:
       max-request-size: 1000MB
       max-file-size: 100MB
   rabbitmq:
-      host: 192.168.3.85
+#      host: 192.168.3.85
+      host: 192.168.1.13
       port: 5672
       username: admin
       password: admin
       virtual-host: /
+      #确认消息发送到交换机
+      publisher-confirm-type: correlated
+      #确认消息发送到队列
+      publisher-returns: true
+      listener:
+        direct:
+          #开启手动确认
+          acknowledge-mode: manual
+          #是否重试
+          retry:
+            enabled: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
@@ -80,6 +92,6 @@ person:
 
 logging:
   file:
-    name: logs/house-lease.log
+    name: logs/product.log
   level:
     com.person.chenpt: debug

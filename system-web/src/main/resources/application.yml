@@ -1,0 +1,22 @@
+server:
+  port: 8800
+spring:
+  application:
+    name: system-web
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://test.jgj.ces:5236
+    username: EPIDEMIC-REPORT
+    password: Aa12345678
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 10MB
+  jackson:
+    date-format: 'yyyy-MM-dd HH:mm:ss'
+    time-zone: GMT+8
+logging:
+  file:
+    path: logs/system-web.log
+  level:
+    com.person.chenpt: debug

@@ -42,11 +42,21 @@ spring:
   application:
       name: spirng-boot-rabbitmq
   rabbitmq:
-      host: 192.168.3.85
+#      host: 192.168.3.85
+      host: 192.168.1.13
       port: 5672
       username: admin
       password: admin
       virtual-host: /
+      listener:
+        #设置监听容器（Listener container）类型，如不设置，将会默认为SimpleRabbitListenerContainerFactory，且下面的direct手动确认配置不生效
+        type: direct
+        direct:
+          #开启手动确认
+          acknowledge-mode: manual
+          #是否重试
+          retry:
+            enabled: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml

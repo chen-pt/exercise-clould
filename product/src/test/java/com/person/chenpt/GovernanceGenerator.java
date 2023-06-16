@@ -52,6 +52,7 @@ public class GovernanceGenerator {
 							.addInclude("T_BILL_PAY_RENT")
 							.addTablePrefix("t_sys_", "t_hm_", "c_", "t_cm","t_bill"); // 设置过滤表前缀
 					builder.entityBuilder()
+							.enableTableFieldAnnotation()
 							.superClass(BaseEntity.class)
 //							.fileOverride()
 							.enableLombok();
