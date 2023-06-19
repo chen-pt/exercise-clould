@@ -23,7 +23,6 @@ public class Knife4jConfiguration {
                 .apiInfo(new ApiInfoBuilder()
                         .title("system-web")
                         .description("#system-web")
-                        .contact("xx@qq.com")
                         .version("1.0")
                         .build())
                 //分组名称

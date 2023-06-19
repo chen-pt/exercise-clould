@@ -12,3 +12,4 @@ consumer消费者
 项目整合了mp并根据模板生成相应代码 controller service mapper xml
 整合jwt
 统一异常处理
+整合shiro
