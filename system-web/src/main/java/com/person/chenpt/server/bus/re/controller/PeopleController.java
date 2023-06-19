@@ -41,6 +41,12 @@ public class PeopleController {
         return Result.success(PageEntity.build(queryPage));
     }
 
+    @GetMapping("/getLst")
+    @ApiOperation("【从业人员信息】列表查询")
+    public Result getLst(@Validated PeoplePageQuery pgQy){
+        return Result.success(peopleService.list());
+    }
+
     @PostMapping("/save-or-update")
     @ApiOperation("【从业人员信息】保存")
     public Result<Boolean> saveOrUpdate(@RequestBody @Validated PeopleSave saveDto){

@@ -20,6 +20,9 @@ import java.util.Map;
 public class JWTUitls {
 
     private static final String SECRET = "chenpt_test";//在真实开发中密钥更严谨，一定不要泄露
+    //指定一个token过期时间（毫秒）
+    private static final long EXPIRE_TIME = 7 * 24 * 60 * 60 * 1000; //7天
+    Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
 
     /**
      * 创建token
@@ -33,7 +36,7 @@ public class JWTUitls {
         String token = Jwts.builder()
                         .setClaims(claims)
 //                        .setExpiration(getExpiresDate())
-                        .setExpiration(new Date(System.currentTimeMillis()+10*1000))//这里设置过期时间为10秒
+                        .setExpiration(new Date(System.currentTimeMillis()+EXPIRE_TIME))//这里设置过期时间为10秒
                         .signWith(SignatureAlgorithm.HS512, SECRET)
                         .setHeaderParam("type", "jwt")
                         .compact();
@@ -66,6 +69,17 @@ public class JWTUitls {
     public static String parseUserIdByJwtToken(String token) {
         Claims claims = parseJwtToken(token);//用户数据
         return claims.get("userId").toString();
+    }
+
+    /**
+     * 判断是否过期
+     *
+     * @param token
+     * @return
+     */
+    public static boolean isExpire(String token){
+        Jws<Claims> jws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+        return jws.getBody().getExpiration().getTime() < System.currentTimeMillis() ;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.person.chenpt.server.bus.sys.controller;
 
 import com.person.chenpt.core.base.model.Result;
+import com.person.chenpt.core.shiroJwt.JwtToken;
 import com.person.chenpt.core.utils.JWTUitls;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,6 +35,22 @@ public class LoginController {
         subject.login(token);
 
         Cookie cookie = new Cookie("c_id",request.getSession().getId());
+        cookie.setMaxAge(60);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return Result.success();
+    }
+
+    @GetMapping("/loginJwt")
+    @ApiOperation("登录")
+    public Result loginJwt(String userName, String passwd, HttpServletRequest request, HttpServletResponse response) {
+        Subject subject = SecurityUtils.getSubject();
+        String jwtTokenStr = JWTUitls.createJwtToken("123456909");
+        JwtToken jwtToken = new JwtToken(jwtTokenStr);
+        subject.login(jwtToken);
+
+        Cookie cookie = new Cookie("jwt_token",jwtTokenStr);
         cookie.setMaxAge(60);
         cookie.setHttpOnly(true);
         cookie.setPath("/");
